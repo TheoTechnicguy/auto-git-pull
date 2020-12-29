@@ -5,6 +5,7 @@
 # Licenced under GPU GLP v3. See LICENCE file for information.
 # -----------------------
 
+import datetime
 import json
 import os
 import subprocess
@@ -12,7 +13,7 @@ import subprocess
 from flask import Flask
 
 # ---------- START Program Constants ----------
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 __author__ = "Theo Technicguy"
 # ---------- END Program Constants ----------
 
@@ -27,8 +28,8 @@ app = Flask(cfg["repository"])
 
 @app.route("/", methods=["POST"])
 def _pull():
-    subprocess.run("git pull", shell=True)
-    return "pulled"
+    subprocess.run(f"cd {WORK_DIR} && git pull", shell=True)
+    return f"Pulled at {datetime.datetime.now()}"
 
 
 app.run(host=cfg["ip"], port=cfg["port"])
