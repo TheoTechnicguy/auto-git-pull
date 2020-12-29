@@ -1,5 +1,5 @@
 [Unit]
-Description=git auto pull service - Version 1.0.0
+Description=git auto pull service - Version 1.0.1
 After=network.target
 ConditionPathExists=<path>/git_pull.py
 
