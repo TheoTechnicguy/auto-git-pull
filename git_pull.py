@@ -42,6 +42,7 @@ app = Flask(cfg["repository"])
 @app.route("/", methods=["POST"])
 def _pull():
     pull = subprocess.run("git pull", shell=True, capture_output=True)
+    logging.info("Command spat out {pull.stdout.decode()}")
     return f"Pulled on {datetime.datetime.now()} with result {pull.stdout.decode()}"
 
 
