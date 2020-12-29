@@ -6,16 +6,20 @@
 # -----------------------
 
 import json
+import os
 import subprocess
 
 from flask import Flask
 
 # ---------- START Program Constants ----------
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 __author__ = "Theo Technicguy"
 # ---------- END Program Constants ----------
 
-with open("git_pull.cfg") as file:
+WORK_DIR = os.path.dirname(__file__)
+CFG_PATH = os.path.join(WORK_DIR, "git_pull.cfg")
+
+with open(CFG_PATH) as file:
     cfg = json.load(file)
 
 app = Flask(cfg["repository"])
