@@ -1,0 +1,12 @@
+[Unit]
+Description=git auto pull service - Version 1.0.0
+After=network.target
+ConditionPathExists=<path>/git_pull.py
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 <path>/git_pull.py
+WorkingDirecory=<path>
+
+[Install]
+WantedBy=multi-user.target
